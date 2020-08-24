@@ -1,0 +1,60 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>
+     AppTareas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>
+         Formulario de tareas
+        </ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-card-content >
+      
+          <ion-item >
+          <ion-label position="floating" color="tertiary">Nombre de Tarea</ion-label>
+          <ion-input #newtitle></ion-input>
+        </ion-item>
+        <ion-item >
+          <ion-label position="floating" color="tertiary">Description de Tarea</ion-label>
+          <ion-textarea #newdescription></ion-textarea>
+        </ion-item>
+    <div id="clase1"><ion-button expand="block" color="tertiary" size="small" (click)="addTarea(newtitle,newdescription)">Agregar</ion-button></div>
+
+      </ion-card-content> 
+      </ion-card>
+
+      <ion-card id="clase1">
+        <ion-card-header>
+          <ion-card-subtitle>
+           Listado de tareas
+          </ion-card-subtitle>
+        </ion-card-header>
+        
+        <ion-card-content>
+           <ion-list *ngFor="let item of tareas">
+         <ion-item> 
+          <div>           
+        <div>{{item.title}}</div>
+        <div [hidden]="item.hide">{{item.description}}</div>
+        <ion-chip color="primary" (click)="item.hide = !item.hide">Mostrar</ion-chip><ion-chip color="danger" (click)="deleteTarea(item)">Eliminar</ion-chip></div>
+         
+        
+</ion-item>
+           </ion-list> 
+    
+        </ion-card-content> 
+        </ion-card>
+  
+    
+
+   
+
+</ion-content>
